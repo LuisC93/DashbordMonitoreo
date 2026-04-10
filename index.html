@@ -223,7 +223,7 @@ tr.tr-total .bloque-name{color:var(--blue);font-size:1rem}
 </main>
 
 <script>
-const API     = "https://script.google.com/macros/s/AKfycbwM3InhUQI8PChW4gCvUr105Uh0k14cjskJtrd3RfN2GgDfXgp553Bl504CIyVvXYBaSw/exec";
+const API     = "https://script.google.com/macros/s/AKfycbw2ToNuvxAMLcxhcKWRyvIz2klJYhMoyft74-CHCqvyA23_2REG6tGGfPOd4pEjdqg7qQ/exec";
 const REFRESH = 30000;
 
 const COLS = [
@@ -264,11 +264,9 @@ function switchTab(n,btn){
 // Fetch
 async function fetchData(){
   try{
-    // cache:'no-store' + parámetros aleatorios evitan caché del navegador y de Apps Script
-    const r=await fetch(API+'?t='+Date.now()+'&r='+Math.random(), {
-      cache: 'no-store',
-      headers: { 'Cache-Control': 'no-cache, no-store, must-revalidate' }
-    });
+    // Los parámetros aleatorios evitan que el navegador y Apps Script cacheen la respuesta
+    // No se usan headers custom para evitar problemas de CORS con Apps Script
+    const r=await fetch(API+'?t='+Date.now()+'&r='+Math.random());
     if(!r.ok) throw new Error('HTTP '+r.status);
     const d=await r.json();
     render(d);
