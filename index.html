@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard Monitoreo</title>
-<link href="https://script.google.com/macros/s/AKfycbwbs-12Ky23n1kcB8ojoK0r24MVQwKvF59v1qcYWLMg4ppbOg43TM6eVn_Hhn04CAzEFA/exec" rel="stylesheet">
+<title>Dashboard Avanzado</title>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#0d1117;--card:#161b22;--card2:#1c2535;
@@ -12,18 +12,12 @@
   --red:#f85149;--purple:#a78bfa;--orange:#e3903a;
   --teal:#20d9ba;--pink:#f778ba;
   --txt:#e6edf3;--muted:#7d8590;--border:rgba(255,255,255,0.07);
-  --thead:#162032;--trow-alt:rgba(255,255,255,0.02);
-  --tot-bg:rgba(88,166,255,0.08);--tot-border:rgba(88,166,255,0.25);
+  --thead:#162032;--tot-bg:rgba(88,166,255,0.08);--tot-border:rgba(88,166,255,0.25);
 }
-body.light{
-  --bg:#f0f4f8;--card:#fff;--card2:#e8f0fe;
-  --txt:#1c2128;--muted:#57606a;--border:rgba(0,0,0,0.08);
-  --thead:#1565c0;--trow-alt:rgba(0,0,0,0.02);
-}
+body.light{--bg:#f0f4f8;--card:#fff;--card2:#e8f0fe;--txt:#1c2128;--muted:#57606a;--border:rgba(0,0,0,0.08);--thead:#1565c0}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Rajdhani',sans-serif;background:var(--bg);color:var(--txt);min-height:100vh;transition:background .3s,color .3s}
 
-/* HEADER */
 header{display:flex;align-items:center;justify-content:space-between;padding:12px 24px;background:var(--card);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200}
 .logo{font-family:'Exo 2',sans-serif;font-size:1.35rem;font-weight:800;display:flex;align-items:center;gap:8px}
 .logo .acc{color:var(--pink)}
@@ -34,21 +28,15 @@ header{display:flex;align-items:center;justify-content:space-between;padding:12p
 .dot{width:8px;height:8px;border-radius:50%;background:var(--cyan);animation:pulse 1.5s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.2}}
 
-/* MAIN */
 main{padding:20px 24px;max-width:1700px;margin:0 auto}
-
-/* STATUS */
 .sbar{display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--muted);margin-bottom:18px;flex-wrap:wrap}
 .sbar .sd{width:7px;height:7px;border-radius:50%;background:var(--cyan);animation:pulse 2s infinite;flex-shrink:0}
 .sbar b{color:var(--cyan)}
 .btn-ref{background:none;border:none;color:var(--blue);font-size:.8rem;cursor:pointer;font-family:'Rajdhani',sans-serif;font-weight:700;padding:0;text-decoration:underline}
 .fbadge{background:rgba(88,166,255,.12);border:1px solid rgba(88,166,255,.3);color:var(--blue);padding:2px 10px;border-radius:10px;font-size:.75rem;font-weight:700}
-
-/* ERROR */
 .errb{background:rgba(248,81,73,.1);border:1px solid var(--red);color:var(--red);padding:10px 16px;border-radius:8px;margin-bottom:14px;font-size:.82rem;display:none}
 
-/* SECTION TITLE */
-.sec{font-family:'Exo 2',sans-serif;font-size:.85rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin:0 0 12px;display:flex;align-items:center;gap:8px}
+.sec{font-family:'Exo 2',sans-serif;font-size:.85rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin:0 0 14px;display:flex;align-items:center;gap:8px}
 .sec span{color:var(--blue)}
 
 /* KPI TOP */
@@ -63,7 +51,7 @@ main{padding:20px 24px;max-width:1700px;margin:0 auto}
 .kpi-bar{height:3px;background:rgba(255,255,255,.07);border-radius:2px;margin-top:12px}
 .kpi-fill{height:100%;border-radius:2px;background:var(--kc,var(--blue));transition:width 1s ease}
 
-/* STAT CARDS (estados conexión) */
+/* STAT CARDS */
 .stat-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:10px;margin-bottom:28px}
 .sc{background:var(--card);border-radius:10px;padding:14px 12px;position:relative;overflow:hidden;text-align:center}
 .sc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:10px 10px 0 0;background:var(--kc,var(--blue))}
@@ -71,7 +59,6 @@ main{padding:20px 24px;max-width:1700px;margin:0 auto}
 .sc-val{font-family:'Exo 2',sans-serif;font-size:1.6rem;font-weight:800;margin-bottom:2px}
 .sc-lbl{font-size:.62rem;font-weight:700;letter-spacing:.7px;text-transform:uppercase;color:var(--muted);line-height:1.3}
 
-/* DIVIDER */
 .divider{height:1px;background:var(--border);margin:6px 0 22px}
 
 /* TABS */
@@ -80,39 +67,32 @@ main{padding:20px 24px;max-width:1700px;margin:0 auto}
 .tab:hover{color:var(--txt)}.tab.on{color:var(--blue);border-bottom-color:var(--blue)}
 .panel{display:none}.panel.on{display:block}
 
-/* BLOQUE SECTION */
-.bloque-wrap{margin-bottom:20px}
-.bloque-hdr{background:linear-gradient(90deg,#1565c0,#1976d2);border-radius:10px 10px 0 0;padding:13px 20px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
-.bloque-hdr-name{font-family:'Exo 2',sans-serif;font-weight:800;font-size:1rem;color:#fff;display:flex;align-items:center;gap:8px}
-.bloque-hdr-badges{display:flex;gap:8px;flex-wrap:wrap}
-.hbadge{background:rgba(255,255,255,.18);color:#fff;padding:3px 12px;border-radius:12px;font-size:.74rem;font-weight:700;display:flex;align-items:center;gap:4px}
-
-/* Resumen mini del bloque */
-.bloque-summary{background:var(--card2);padding:9px 20px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;border-left:1px solid var(--border);border-right:1px solid var(--border)}
-.bsum-item{display:flex;align-items:center;gap:5px;font-size:.78rem}
-.bsum-lbl{color:var(--muted);font-weight:600}
-.bsum-val{font-family:'Exo 2',sans-serif;font-weight:800;font-size:.88rem}
-
-/* TABLE */
-.tbl-wrap{overflow-x:auto;border:1px solid var(--border);border-top:none;border-radius:0 0 10px 10px}
-table{width:100%;border-collapse:collapse;font-size:.8rem;min-width:860px}
+/* ── TABLA BLOQUES ── */
+.tbl-wrap{overflow-x:auto;border-radius:10px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:.82rem;min-width:860px}
 thead tr{background:var(--thead)}
-th{padding:9px 11px;text-align:center;white-space:nowrap;font-family:'Rajdhani',sans-serif;font-size:.67rem;font-weight:700;letter-spacing:.7px;text-transform:uppercase;color:rgba(255,255,255,.65);border-right:1px solid rgba(255,255,255,.06)}
-th:first-child{text-align:left;color:rgba(255,255,255,.9);min-width:130px}
+th{padding:11px 14px;text-align:center;white-space:nowrap;font-family:'Rajdhani',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:rgba(255,255,255,.65);border-right:1px solid rgba(255,255,255,.05)}
+th:first-child{text-align:left;color:#fff;min-width:200px}
 th:last-child{border-right:none}
 tbody tr{border-bottom:1px solid var(--border);transition:background .12s}
-tbody tr:nth-child(even){background:var(--trow-alt)}
-tbody tr:hover{background:rgba(88,166,255,.05)}
+tbody tr:nth-child(even){background:rgba(255,255,255,.02)}
+tbody tr:hover{background:rgba(88,166,255,.06)}
 tbody tr:last-child{border-bottom:none}
-td{padding:9px 11px;text-align:center;border-right:1px solid var(--border)}
-td:first-child{text-align:left;font-weight:700}
+td{padding:12px 14px;text-align:center;border-right:1px solid var(--border)}
+td:first-child{text-align:left;border-right:1px solid var(--border)}
 td:last-child{border-right:none}
+
+/* Nombre bloque en celda */
+.bloque-name{font-family:'Exo 2',sans-serif;font-weight:800;font-size:.92rem;color:var(--blue);display:flex;align-items:center;gap:8px}
+.bloque-total-badge{background:rgba(88,166,255,.12);color:var(--blue);padding:2px 8px;border-radius:8px;font-size:.75rem;font-weight:700}
+
+/* Fila TOTAL */
 tr.tr-total{background:var(--tot-bg)!important;border-top:2px solid var(--tot-border)!important}
 tr.tr-total td{font-family:'Exo 2',sans-serif;font-weight:800}
-tr.tr-total td:first-child{color:var(--blue);letter-spacing:.5px}
+tr.tr-total .bloque-name{color:var(--blue);font-size:1rem}
 
 /* PILLS */
-.pill{display:inline-flex;align-items:center;justify-content:center;min-width:26px;padding:2px 7px;border-radius:9px;font-family:'Exo 2',sans-serif;font-weight:700;font-size:.78rem;line-height:1.4}
+.pill{display:inline-flex;align-items:center;justify-content:center;min-width:28px;padding:3px 9px;border-radius:9px;font-family:'Exo 2',sans-serif;font-weight:700;font-size:.82rem}
 .p0{color:var(--muted)}
 .p-cyan  {background:rgba(63,185,80,.15);  color:var(--cyan)}
 .p-red   {background:rgba(248,81,73,.15);  color:var(--red)}
@@ -123,7 +103,6 @@ tr.tr-total td:first-child{color:var(--blue);letter-spacing:.5px}
 .p-blue  {background:rgba(88,166,255,.15); color:var(--blue)}
 .p-muted {background:rgba(125,133,144,.15);color:var(--muted)}
 .p-total {background:rgba(88,166,255,.2);  color:var(--blue)}
-.p-sin   {background:rgba(125,133,144,.1); color:var(--muted)}
 
 /* LOADER */
 .loader{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:999;gap:14px;transition:opacity .5s}
@@ -132,13 +111,9 @@ tr.tr-total td:first-child{color:var(--blue);letter-spacing:.5px}
 @keyframes spin{to{transform:rotate(360deg)}}
 .ltxt{font-family:'Exo 2',sans-serif;font-size:.8rem;color:var(--muted)}
 
-/* EMPTY */
-.empty{color:var(--muted);font-size:.83rem;padding:20px 0}
-
-/* RESPONSIVE */
 @media(max-width:1200px){.stat-grid{grid-template-columns:repeat(4,1fr)}}
 @media(max-width:860px){.top-cards{grid-template-columns:1fr 1fr}.top-cards .kpi:first-child{grid-column:1/-1}.stat-grid{grid-template-columns:repeat(4,1fr)}}
-@media(max-width:560px){main{padding:12px}.top-cards,.stat-grid{grid-template-columns:1fr 1fr}.tab{font-size:.72rem;padding:8px 10px}}
+@media(max-width:560px){main{padding:12px}.top-cards,.stat-grid{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
@@ -168,25 +143,25 @@ tr.tr-total td:first-child{color:var(--blue);letter-spacing:.5px}
     <button class="tab"    onclick="switchTab('est',this)">📊 Estadísticas por Bloque</button>
   </div>
 
-  <!-- ══ PANEL INICIO ══ -->
+  <!-- INICIO -->
   <div class="panel on" id="panel-inicio">
-    <div class="empty" style="padding:40px 0;text-align:center;font-size:.95rem">
+    <div style="color:var(--muted);font-size:.9rem;padding:40px 0;text-align:center">
       🏠 Aquí irá la vista principal con el segundo Sheet.<br>
-      <span style="font-size:.8rem;color:var(--muted)">Agrégalo cuando tengas el link del segundo Drive.</span>
+      <span style="font-size:.8rem">Agrégalo cuando tengas el link del segundo Drive.</span>
     </div>
   </div>
 
-  <!-- ══ PANEL ESTADÍSTICAS POR BLOQUE ══ -->
+  <!-- ESTADÍSTICAS POR BLOQUE -->
   <div class="panel" id="panel-est">
 
-    <!-- KPI globales -->
+    <!-- KPIs globales -->
     <div class="sec">📊 <span>Totales Globales — Hoy</span></div>
     <div class="top-cards">
       <div class="kpi" style="--kc:var(--blue)">
         <span class="kpi-icon">🏫</span>
         <div class="kpi-val" id="gTotal">—</div>
         <div class="kpi-lbl">Total Registros</div>
-        <div class="kpi-sub" id="gBloques">— bloques</div>
+        <div class="kpi-sub" id="gBloques">8 bloques</div>
         <div class="kpi-bar"><div class="kpi-fill" style="width:100%"></div></div>
       </div>
       <div class="kpi" style="--kc:var(--cyan)">
@@ -205,52 +180,72 @@ tr.tr-total td:first-child{color:var(--blue);letter-spacing:.5px}
       </div>
     </div>
 
-    <!-- Cards estados de conexión -->
+    <!-- Cards estados globales -->
     <div class="stat-grid">
       <div class="sc" style="--kc:var(--cyan)">   <span class="sc-icon">📶</span><div class="sc-val" id="sEstable">—</div><div class="sc-lbl">Nav. Estable</div></div>
       <div class="sc" style="--kc:var(--red)">    <span class="sc-icon">✂️</span> <div class="sc-val" id="sCorte">—</div>  <div class="sc-lbl">Corte F.O</div></div>
-      <div class="sc" style="--kc:var(--yellow)"> <span class="sc-icon">🔌</span><div class="sc-val" id="sApagado">—</div><div class="sc-lbl">Equipo Apagado</div></div>
+      <div class="sc" style="--kc:var(--yellow)"> <span class="sc-icon">🔌</span><div class="sc-val" id="sApagado">—</div><div class="sc-lbl">Eq. Apagado</div></div>
       <div class="sc" style="--kc:var(--purple)"> <span class="sc-icon">🔧</span><div class="sc-val" id="sIntv">—</div>   <div class="sc-lbl">Intervenida</div></div>
       <div class="sc" style="--kc:var(--orange)"> <span class="sc-icon">⏱</span> <div class="sc-val" id="sLat">—</div>    <div class="sc-lbl">Latencia</div></div>
       <div class="sc" style="--kc:var(--teal)">   <span class="sc-icon">📡</span><div class="sc-val" id="sAncho">—</div>  <div class="sc-lbl">Ancho Banda</div></div>
-      <div class="sc" style="--kc:var(--blue)">   <span class="sc-icon">❗</span> <div class="sc-val" id="sPNav">—</div>   <div class="sc-lbl">Prob. Navegación</div></div>
+      <div class="sc" style="--kc:var(--blue)">   <span class="sc-icon">❗</span> <div class="sc-val" id="sPNav">—</div>   <div class="sc-lbl">Prob. Nav.</div></div>
       <div class="sc" style="--kc:var(--muted)">  <span class="sc-icon">📊</span><div class="sc-val" id="sSat">—</div>    <div class="sc-lbl">Saturación</div></div>
     </div>
 
     <div class="divider"></div>
 
-    <!-- Detalle por bloque -->
+    <!-- Tabla única con todos los bloques -->
     <div class="sec">🗂 <span>Detalle por Bloque</span></div>
-    <div id="bloquesEl"><div class="empty">Cargando bloques…</div></div>
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Bloque</th>
+            <th>📶 Nav. Estable</th>
+            <th>✂️ Corte F.O</th>
+            <th>🔌 Eq. Apagado</th>
+            <th>🔧 Intervenida</th>
+            <th>⏱ Latencia</th>
+            <th>📡 Ancho Banda</th>
+            <th>❗ Prob. Nav.</th>
+            <th>📊 Saturación</th>
+            <th>Sin Estado</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody id="bloquesBody">
+          <tr><td colspan="11" style="color:var(--muted);text-align:center;padding:20px">Cargando…</td></tr>
+        </tbody>
+      </table>
+    </div>
 
   </div><!-- /panel-est -->
-
 </main>
 
 <script>
-const API     = "https://script.google.com/macros/s/AKfycbwhbLT9GJOMkNm1PhtKEHykRE0YcGMkIhk9YvpC8eknSvSB66aLjJC8vC8uvn0I1kqmGg/exec";
+const API     = "https://script.google.com/macros/s/AKfycbwN-ZrTM4YS9r_xkGKaUVeE_Y0QKqlM4MvPmCpt4OuJEZK9w_DH09kCcWZC6Upr7ANg/exec";
 const REFRESH = 30000;
 
-// Columnas de estados con slug del servidor, etiqueta, clase pill
 const COLS = [
-  { s:"navegacin_estable",          alt:"navegacion_estable",          lbl:"Nav. Estable",   cls:"p-cyan",   ico:"📶" },
-  { s:"corte_fo_externa",           alt:"corte_fo_externa",            lbl:"Corte F.O",      cls:"p-red",    ico:"✂️" },
-  { s:"equipo_apagado",             alt:"equipo_apagado",              lbl:"Eq. Apagado",    cls:"p-yellow", ico:"🔌" },
-  { s:"intervenida",                alt:"intervenida",                 lbl:"Intervenida",    cls:"p-purple", ico:"🔧" },
-  { s:"latencia",                   alt:"latencia",                    lbl:"Latencia",       cls:"p-orange", ico:"⏱" },
-  { s:"problema_de_ancho_de_banda", alt:"problema_de_ancho_de_banda",  lbl:"Ancho Banda",    cls:"p-teal",   ico:"📡" },
-  { s:"problema_de_navegacin",      alt:"problema_de_navegacion",      lbl:"Prob. Nav.",     cls:"p-blue",   ico:"❗" },
-  { s:"saturacin",                  alt:"saturacion",                  lbl:"Saturación",     cls:"p-muted",  ico:"📊" },
+  { s:"navegacin_estable",          alt:"navegacion_estable"          },
+  { s:"corte_fo_externa",           alt:"corte_fo_externa"            },
+  { s:"equipo_apagado",             alt:"equipo_apagado"              },
+  { s:"intervenida",                alt:"intervenida"                 },
+  { s:"latencia",                   alt:"latencia"                    },
+  { s:"problema_de_ancho_de_banda", alt:"problema_de_ancho_de_banda"  },
+  { s:"problema_de_navegacin",      alt:"problema_de_navegacion"      },
+  { s:"saturacin",                  alt:"saturacion"                  },
 ];
+const CLASES = ["p-cyan","p-red","p-yellow","p-purple","p-orange","p-teal","p-blue","p-muted"];
 
-// ── Reloj
+// Reloj
 setInterval(()=>{
   const n=new Date();
   document.getElementById('clk').textContent=
     [n.getHours(),n.getMinutes(),n.getSeconds()].map(v=>String(v).padStart(2,'0')).join(':');
 },1000);
 
-// ── Dark mode
+// Dark mode
 let dark=true;
 function toggleDark(){
   dark=!dark;
@@ -258,7 +253,7 @@ function toggleDark(){
   document.getElementById('btnDk').textContent=dark?'🌙 MODO OSCURO':'☀️ MODO CLARO';
 }
 
-// ── Tabs
+// Tabs
 function switchTab(n,btn){
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
   document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
@@ -266,17 +261,17 @@ function switchTab(n,btn){
   btn.classList.add('on');
 }
 
-// ── Fetch
+// Fetch
 async function fetchData(){
   try{
-    const r = await fetch(API+'?t='+Date.now());
+    const r=await fetch(API+'?t='+Date.now());
     if(!r.ok) throw new Error('HTTP '+r.status);
-    const d = await r.json();
+    const d=await r.json();
     render(d);
     document.getElementById('errb').style.display='none';
   }catch(e){
     const eb=document.getElementById('errb');
-    eb.textContent='⚠️ Error al conectar: '+e.message;
+    eb.textContent='⚠️ Error: '+e.message;
     eb.style.display='block';
   }finally{
     const l=document.getElementById('ldr');
@@ -285,144 +280,80 @@ async function fetchData(){
   }
 }
 
-// ── Render
 function render(d){
-  document.getElementById('upd').textContent = new Date().toLocaleTimeString('es-SV');
-  document.getElementById('fbadge').textContent = d.fechaDatos||'Hoy';
+  document.getElementById('upd').textContent=new Date().toLocaleTimeString('es-SV');
+  document.getElementById('fbadge').textContent=d.fechaDatos||'Hoy';
 
-  const tot = d.total||0;
-  const mon = d.enMonitoreo||0;
-  const pri = d.prioridad||0;
+  const tot=d.total||0, mon=d.enMonitoreo||0, pri=d.prioridad||0;
+  anim('gTotal',tot); anim('gMon',mon); anim('gPri',pri);
+  document.getElementById('gMonPct').textContent=tot?Math.round(mon/tot*100)+'% del total':'0% del total';
+  document.getElementById('gPriPct').textContent=tot?Math.round(pri/tot*100)+'% del total':'0% del total';
+  setTimeout(()=>{ setBar('bMon',tot?Math.round(mon/tot*100):0); setBar('bPri',tot?Math.round(pri/tot*100):0); },100);
 
-  anim('gTotal', tot);
-  anim('gMon',   mon);
-  anim('gPri',   pri);
-  document.getElementById('gBloques').textContent = (d.bloques||[]).length+' bloques';
-  document.getElementById('gMonPct').textContent  = tot ? Math.round(mon/tot*100)+'% del total' : '0% del total';
-  document.getElementById('gPriPct').textContent  = tot ? Math.round(pri/tot*100)+'% del total' : '0% del total';
-  setTimeout(()=>{
-    setBar('bMon', tot ? Math.round(mon/tot*100) : 0);
-    setBar('bPri', tot ? Math.round(pri/tot*100) : 0);
-  },100);
+  const g=d.globales||{};
+  const gv=c=>g[c.s]||g[c.alt]||0;
+  anim('sEstable',gv(COLS[0])); anim('sCorte',gv(COLS[1]));
+  anim('sApagado',gv(COLS[2])); anim('sIntv',gv(COLS[3]));
+  anim('sLat',gv(COLS[4]));     anim('sAncho',gv(COLS[5]));
+  anim('sPNav',gv(COLS[6]));    anim('sSat',gv(COLS[7]));
 
-  // Cards globales de estados — intenta ambos slugs (con/sin tilde)
-  const g = d.globales||{};
-  const gv = (c) => g[c.s] || g[c.alt] || 0;
-  anim('sEstable', gv(COLS[0]));
-  anim('sCorte',   gv(COLS[1]));
-  anim('sApagado', gv(COLS[2]));
-  anim('sIntv',    gv(COLS[3]));
-  anim('sLat',     gv(COLS[4]));
-  anim('sAncho',   gv(COLS[5]));
-  anim('sPNav',    gv(COLS[6]));
-  anim('sSat',     gv(COLS[7]));
-
-  renderBloques(d.bloques||[]);
+  renderTabla(d.bloques||[]);
 }
 
-// ── Render bloques
-function renderBloques(bloques){
-  const el = document.getElementById('bloquesEl');
+function renderTabla(bloques){
+  const body=document.getElementById('bloquesBody');
   if(!bloques.length){
-    el.innerHTML='<div class="empty">Sin datos para hoy.</div>';
+    body.innerHTML='<tr><td colspan="11" style="color:var(--muted);text-align:center;padding:20px">Sin datos para hoy.</td></tr>';
     return;
   }
 
-  el.innerHTML = bloques.map(b=>{
-    const tot = b.totales||{};
-
-    // helper: obtener valor del totales intentando ambos slugs
-    const tv = (c) => tot[c.s]||tot[c.alt]||0;
-
-    // Resumen mini — solo estados con valor > 0
-    const summaryItems = COLS
-      .filter(c => tv(c) > 0)
-      .map(c=>`
-        <span class="bsum-item">
-          <span class="bsum-lbl">${c.ico}</span>
-          <span class="bsum-val" style="color:var(${cssVar(c.cls)})">${tv(c)}</span>
-        </span>`)
-      .join('');
-
-    // helper para filas
-    const sv = (row, c) => row[c.s]||row[c.alt]||0;
-
-    // Filas de supervisores
-    const filasSup = (b.supervisoresData||[]).map(s=>`
-      <tr>
-        <td>${s.supervisor}</td>
-        ${COLS.map(c=>{
-          const v = sv(s,c);
-          return `<td>${v>0 ? `<span class="pill ${c.cls}">${v}</span>` : `<span class="p0">—</span>`}</td>`;
-        }).join('')}
-        <td>${(s.sinEstado||0)>0 ? `<span class="pill p-sin">${s.sinEstado}</span>` : `<span class="p0">—</span>`}</td>
-        <td><span class="pill p-total">${s.total||0}</span></td>
-      </tr>`).join('');
-
-    // Fila TOTAL del bloque
-    const filaTot = `
-      <tr class="tr-total">
-        <td>TOTAL</td>
-        ${COLS.map(c=>{
-          const v = tv(c);
-          return `<td>${v>0 ? `<span class="pill ${c.cls}">${v}</span>` : `<span class="p0">—</span>`}</td>`;
-        }).join('')}
-        <td>${(tot.sinEstado||0)>0 ? `<span class="pill p-sin">${tot.sinEstado}</span>` : `<span class="p0">—</span>`}</td>
-        <td><span class="pill p-total">${tot.total||0}</span></td>
-      </tr>`;
-
-    return `
-    <div class="bloque-wrap">
-      <div class="bloque-hdr">
-        <div class="bloque-hdr-name">🗂 ${b.nombre}</div>
-        <div class="bloque-hdr-badges">
-          <span class="hbadge">👤 ${b.supervisores} Supervisor${b.supervisores!==1?'es':''}</span>
-          <span class="hbadge">🏫 ${b.total} Escuelas</span>
-        </div>
-      </div>
-      ${summaryItems ? `<div class="bloque-summary">${summaryItems}</div>` : ''}
-      <div class="tbl-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Supervisor</th>
-              ${COLS.map(c=>`<th>${c.ico} ${c.lbl}</th>`).join('')}
-              <th>Sin Estado</th>
-              <th>Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${filasSup}
-            ${filaTot}
-          </tbody>
-        </table>
-      </div>
-    </div>`;
+  // filas de bloques
+  let html = bloques.map(b=>{
+    const t=b.totales||{};
+    const tv=c=>t[c.s]||t[c.alt]||0;
+    const celdas = COLS.map((c,i)=>{
+      const v=tv(c);
+      return `<td>${v>0?`<span class="pill ${CLASES[i]}">${v}</span>`:`<span class="p0">—</span>`}</td>`;
+    }).join('');
+    const sin=(t.sinEstado||0);
+    return `<tr>
+      <td><span class="bloque-name">🗂 ${b.nombre} <span class="bloque-total-badge">${t.total||0}</span></span></td>
+      ${celdas}
+      <td>${sin>0?`<span class="pill p-muted">${sin}</span>`:`<span class="p0">—</span>`}</td>
+      <td><span class="pill p-total">${t.total||0}</span></td>
+    </tr>`;
   }).join('');
-}
 
-function cssVar(cls){
-  const m={'p-cyan':'--cyan','p-red':'--red','p-yellow':'--yellow',
-    'p-purple':'--purple','p-orange':'--orange','p-teal':'--teal',
-    'p-blue':'--blue','p-muted':'--muted'};
-  return m[cls]||'--blue';
+  // fila TOTAL general
+  const totGen={};
+  COLS.forEach(c=>{ totGen[c.s]=(bloques.reduce((a,b)=>{const t=b.totales||{};return a+(t[c.s]||t[c.alt]||0);},0)); });
+  const sinGen=bloques.reduce((a,b)=>a+((b.totales||{}).sinEstado||0),0);
+  const totalGen=bloques.reduce((a,b)=>a+((b.totales||{}).total||0),0);
+  const celdasGen=COLS.map((c,i)=>{
+    const v=totGen[c.s]||0;
+    return `<td>${v>0?`<span class="pill ${CLASES[i]}">${v}</span>`:`<span class="p0">—</span>`}</td>`;
+  }).join('');
+
+  html+=`<tr class="tr-total">
+    <td><span class="bloque-name">📊 TOTAL GENERAL</span></td>
+    ${celdasGen}
+    <td>${sinGen>0?`<span class="pill p-muted">${sinGen}</span>`:`<span class="p0">—</span>`}</td>
+    <td><span class="pill p-total">${totalGen}</span></td>
+  </tr>`;
+
+  body.innerHTML=html;
 }
 
 function anim(id,target){
-  const el=document.getElementById(id); if(!el)return;
-  const s=parseInt(el.textContent.replace(/\D/g,''))||0;
-  const t0=performance.now();
-  const go=now=>{
-    const p=Math.min((now-t0)/700,1);
-    el.textContent=Math.round(s+(target-s)*(1-Math.pow(1-p,3))).toLocaleString('es-SV');
-    if(p<1) requestAnimationFrame(go);
-  };
+  const el=document.getElementById(id);if(!el)return;
+  const s=parseInt(el.textContent.replace(/\D/g,''))||0,t0=performance.now();
+  const go=now=>{const p=Math.min((now-t0)/700,1);el.textContent=Math.round(s+(target-s)*(1-Math.pow(1-p,3))).toLocaleString('es-SV');if(p<1)requestAnimationFrame(go);};
   requestAnimationFrame(go);
 }
 function setBar(id,pct){const el=document.getElementById(id);if(el)el.style.width=pct+'%';}
 
 fetchData();
-setInterval(fetchData, REFRESH);
+setInterval(fetchData,REFRESH);
 </script>
 </body>
 </html>
