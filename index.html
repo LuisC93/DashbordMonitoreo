@@ -155,7 +155,7 @@ tr.tr-total .bloque-name{color:var(--blue);font-size:1rem}
   <div class="panel" id="panel-est">
 
     <!-- KPIs globales -->
-    <div class="sec">📊 <span>Totales Globales — Hoy</span></div>
+    <div class="sec">📊 <span>Totales Globales — <span id="secFecha">Cargando…</span></span></div>
     <div class="top-cards">
       <div class="kpi" style="--kc:var(--blue)">
         <span class="kpi-icon">🏫</span>
@@ -223,7 +223,7 @@ tr.tr-total .bloque-name{color:var(--blue);font-size:1rem}
 </main>
 
 <script>
-const API     = "https://script.google.com/macros/s/AKfycbw2ToNuvxAMLcxhcKWRyvIz2klJYhMoyft74-CHCqvyA23_2REG6tGGfPOd4pEjdqg7qQ/exec";
+const API     = "https://script.google.com/macros/s/AKfycbwM3InhUQI8PChW4gCvUr105Uh0k14cjskJtrd3RfN2GgDfXgp553Bl504CIyVvXYBaSw/exec";
 const REFRESH = 30000;
 
 const COLS = [
@@ -264,7 +264,11 @@ function switchTab(n,btn){
 // Fetch
 async function fetchData(){
   try{
-    const r=await fetch(API+'?t='+Date.now());
+    // cache:'no-store' + parámetros aleatorios evitan caché del navegador y de Apps Script
+    const r=await fetch(API+'?t='+Date.now()+'&r='+Math.random(), {
+      cache: 'no-store',
+      headers: { 'Cache-Control': 'no-cache, no-store, must-revalidate' }
+    });
     if(!r.ok) throw new Error('HTTP '+r.status);
     const d=await r.json();
     render(d);
@@ -282,7 +286,11 @@ async function fetchData(){
 
 function render(d){
   document.getElementById('upd').textContent=new Date().toLocaleTimeString('es-SV');
-  document.getElementById('fbadge').textContent=d.fechaDatos||'Hoy';
+  const fecha = d.fechaDatos || 'Hoy';
+  document.getElementById('fbadge').textContent = fecha;
+  // Actualizar también el título de la sección
+  const sf = document.getElementById('secFecha');
+  if(sf) sf.textContent = fecha;
 
   const tot=d.total||0, mon=d.enMonitoreo||0, pri=d.prioridad||0;
   anim('gTotal',tot); anim('gMon',mon); anim('gPri',pri);
@@ -300,8 +308,20 @@ function render(d){
   renderTabla(d.bloques||[]);
 }
 
+// Bloques a ocultar del dashboard
+const BLOQUES_EXCLUIDOS = [
+  "matutino / vespertino",
+  "matutino",
+  "jornada completa",
+  "vespertino"
+];
+
 function renderTabla(bloques){
   const body=document.getElementById('bloquesBody');
+
+  // Filtrar bloques no deseados
+  bloques = bloques.filter(b => !BLOQUES_EXCLUIDOS.includes(b.nombre.trim().toLowerCase()));
+
   if(!bloques.length){
     body.innerHTML='<tr><td colspan="11" style="color:var(--muted);text-align:center;padding:20px">Sin datos para hoy.</td></tr>';
     return;
