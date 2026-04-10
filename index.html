@@ -6,26 +6,38 @@
 <title>Dashboard Avanzado</title>
 <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0d1117;--card:#161b22;--card2:#1c2333;--blue:#58a6ff;--cyan:#3fb950;--yellow:#d29922;--red:#f85149;--purple:#a78bfa;--txt:#e6edf3;--muted:#7d8590;--border:rgba(255,255,255,0.07)}
-body.light{--bg:#f0f4f8;--card:#fff;--card2:#e8edf3;--txt:#1c2128;--muted:#57606a;--border:rgba(0,0,0,0.08)}
+:root{
+  --bg:#0d1117;--card:#161b22;--card2:#1c2333;
+  --blue:#58a6ff;--cyan:#3fb950;--yellow:#d29922;
+  --red:#f85149;--purple:#a78bfa;--orange:#e3903a;--teal:#20d9ba;
+  --txt:#e6edf3;--muted:#7d8590;--border:rgba(255,255,255,0.07);
+  --hdr-table:#1e3a5f;
+}
+body.light{--bg:#f0f4f8;--card:#fff;--card2:#e8edf3;--txt:#1c2128;--muted:#57606a;--border:rgba(0,0,0,0.08);--hdr-table:#1565c0}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Rajdhani',sans-serif;background:var(--bg);color:var(--txt);min-height:100vh;transition:background .3s,color .3s}
+
+/* HEADER */
 header{display:flex;align-items:center;justify-content:space-between;padding:13px 26px;background:var(--card);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
 .logo{font-family:'Exo 2',sans-serif;font-size:1.4rem;font-weight:800;display:flex;align-items:center;gap:8px}
-.logo-i{color:var(--blue)}.logo-t span{color:#f778ba}
+.logo span.p{color:#f778ba}
 .hdr-r{display:flex;align-items:center;gap:12px}
 .btn-tog{background:transparent;border:1.5px solid var(--border);color:var(--txt);padding:6px 16px;border-radius:20px;cursor:pointer;font-family:'Rajdhani',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.5px;display:flex;align-items:center;gap:6px;transition:.2s}
 .btn-tog:hover{background:rgba(255,255,255,.06)}
-.clk{background:#0f2a14;border:1.5px solid var(--cyan);color:var(--cyan);padding:6px 16px;border-radius:20px;font-family:'Exo 2',sans-serif;font-size:.88rem;font-weight:700;display:flex;align-items:center;gap:8px}
+.clkw{background:#0f2a14;border:1.5px solid var(--cyan);color:var(--cyan);padding:6px 16px;border-radius:20px;font-family:'Exo 2',sans-serif;font-size:.88rem;font-weight:700;display:flex;align-items:center;gap:8px}
 .dot{width:8px;height:8px;border-radius:50%;background:var(--cyan);animation:pulse 1.5s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
-main{padding:22px 26px;max-width:1600px;margin:0 auto}
+
+/* MAIN */
+main{padding:22px 26px;max-width:1700px;margin:0 auto}
 .sbar{display:flex;align-items:center;gap:10px;font-size:.82rem;color:var(--muted);margin-bottom:20px;flex-wrap:wrap}
 .sbar .sd{width:7px;height:7px;border-radius:50%;background:var(--cyan);animation:pulse 2s infinite}
 .sbar b{color:var(--cyan)}
 .btn-ref{background:none;border:none;color:var(--blue);font-size:.82rem;cursor:pointer;font-family:'Rajdhani',sans-serif;font-weight:700;padding:0}
 .fbadge{background:rgba(88,166,255,.12);border:1px solid rgba(88,166,255,.3);color:var(--blue);padding:3px 12px;border-radius:12px;font-size:.78rem;font-weight:700}
 .errb{background:rgba(248,81,73,.1);border:1px solid var(--red);color:var(--red);padding:10px 16px;border-radius:8px;margin-bottom:16px;font-size:.83rem;display:none}
+
+/* KPI TOP */
 .top-cards{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:16px;margin-bottom:24px}
 .kpi{background:var(--card);border-radius:12px;padding:26px 22px 20px;position:relative;overflow:hidden;transition:transform .2s}
 .kpi:hover{transform:translateY(-2px)}
@@ -36,43 +48,92 @@ main{padding:22px 26px;max-width:1600px;margin:0 auto}
 .kpi-sub{font-size:.78rem;color:var(--muted)}
 .kpi-bar{height:3px;background:rgba(255,255,255,.07);border-radius:2px;margin-top:14px}
 .kpi-fill{height:100%;border-radius:2px;background:var(--kc,var(--blue));transition:width 1s ease}
+
+/* TABS */
 .tabs{display:flex;border-bottom:1px solid var(--border);margin-bottom:22px;overflow-x:auto}
 .tab{background:none;border:none;color:var(--muted);font-family:'Rajdhani',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:11px 20px;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:.2s;white-space:nowrap;display:flex;align-items:center;gap:7px}
 .tab:hover{color:var(--txt)}.tab.on{color:var(--blue);border-bottom-color:var(--blue)}
 .panel{display:none}.panel.on{display:block}
+
+/* STAT ROW */
 .stat-row{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:26px}
 .sc{background:var(--card);border-radius:10px;padding:20px 16px;position:relative;overflow:hidden}
 .sc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--kc,var(--blue));border-radius:10px 10px 0 0}
 .sc-icon{font-size:1.5rem;margin-bottom:6px}
 .sc-val{font-family:'Exo 2',sans-serif;font-size:2rem;font-weight:800;margin-bottom:3px}
 .sc-lbl{font-size:.68rem;font-weight:700;letter-spacing:.9px;text-transform:uppercase;color:var(--muted)}
+
+/* SECTION TITLE */
 .sec-ttl{font-family:'Exo 2',sans-serif;font-size:.92rem;font-weight:700;color:var(--blue);margin-bottom:14px;display:flex;align-items:center;gap:8px}
-.blist{display:flex;flex-direction:column;gap:10px}
-.bc{background:var(--card);border-radius:10px;padding:15px 18px;display:flex;align-items:center;justify-content:space-between;border-left:4px solid var(--blue);transition:.2s;flex-wrap:wrap;gap:10px}
-.bc:hover{border-left-color:var(--cyan);background:var(--card2)}
-.bc-name{font-family:'Exo 2',sans-serif;font-weight:700;font-size:.95rem;color:var(--blue);margin-bottom:3px}
-.bc-meta{font-size:.76rem;color:var(--muted)}
-.bc-stats{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
-.bc-s{text-align:center}
-.bc-sv{font-family:'Exo 2',sans-serif;font-weight:700;font-size:1.05rem}
-.bc-sl{font-size:.65rem;text-transform:uppercase;letter-spacing:.7px;color:var(--muted)}
-.badge{padding:3px 10px;border-radius:10px;font-size:.7rem;font-weight:700;letter-spacing:.3px}
-.bg{background:rgba(63,185,80,.13);color:var(--cyan)}.by{background:rgba(210,153,34,.13);color:var(--yellow)}.br{background:rgba(248,81,73,.13);color:var(--red)}
+
+/* ── TABLA POR BLOQUE ── */
+.bloque-section{margin-bottom:24px}
+
+.bloque-header{
+  background:linear-gradient(90deg,#1565c0,#1976d2);
+  border-radius:10px 10px 0 0;
+  padding:14px 20px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.bloque-header-name{font-family:'Exo 2',sans-serif;font-weight:800;font-size:1.05rem;color:#fff;display:flex;align-items:center;gap:10px}
+.bloque-header-meta{display:flex;gap:10px}
+.bloque-meta-badge{background:rgba(255,255,255,.18);color:#fff;padding:4px 12px;border-radius:12px;font-size:.76rem;font-weight:700;display:flex;align-items:center;gap:5px}
+
+.table-wrap{overflow-x:auto;border-radius:0 0 10px 10px;border:1px solid var(--border);border-top:none}
+table{width:100%;border-collapse:collapse;font-size:.82rem}
+thead tr{background:var(--hdr-table)}
+thead th{
+  padding:10px 12px;text-align:center;
+  font-family:'Rajdhani',sans-serif;font-size:.7rem;font-weight:700;
+  letter-spacing:.8px;text-transform:uppercase;color:rgba(255,255,255,.7);
+  border-right:1px solid rgba(255,255,255,.06);white-space:nowrap;
+}
+thead th:first-child{text-align:left;color:#fff}
+tbody tr{border-bottom:1px solid var(--border);transition:background .15s}
+tbody tr:hover{background:rgba(88,166,255,.05)}
+tbody tr:last-child{border-bottom:none}
+tbody td{padding:10px 12px;text-align:center;border-right:1px solid var(--border)}
+tbody td:first-child{text-align:left;font-weight:700;color:var(--txt)}
+/* TOTAL row */
+tbody tr.total-row{background:rgba(88,166,255,.08);border-top:2px solid rgba(88,166,255,.3)}
+tbody tr.total-row td{font-family:'Exo 2',sans-serif;font-weight:800}
+tbody tr.total-row td:first-child{color:var(--blue);letter-spacing:.5px}
+
+/* Pill badges en celdas */
+.pill{display:inline-flex;align-items:center;justify-content:center;min-width:28px;padding:2px 8px;border-radius:10px;font-family:'Exo 2',sans-serif;font-weight:700;font-size:.82rem}
+.pill-0{color:var(--muted)}
+.pill-red{background:rgba(248,81,73,.15);color:var(--red)}
+.pill-yellow{background:rgba(210,153,34,.15);color:var(--yellow)}
+.pill-purple{background:rgba(167,139,250,.15);color:var(--purple)}
+.pill-orange{background:rgba(227,144,58,.15);color:var(--orange)}
+.pill-cyan{background:rgba(63,185,80,.15);color:var(--cyan)}
+.pill-teal{background:rgba(32,217,186,.15);color:var(--teal)}
+.pill-blue{background:rgba(88,166,255,.15);color:var(--blue)}
+.pill-muted{background:rgba(125,133,144,.15);color:var(--muted)}
+.pill-total{background:rgba(88,166,255,.2);color:var(--blue)}
+
+/* SUPERVISORES */
 .sg{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px}
 .scard{background:var(--card);border-radius:10px;padding:16px 18px;display:flex;align-items:center;gap:13px}
 .sav{width:42px;height:42px;background:linear-gradient(135deg,var(--blue),var(--purple));border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Exo 2',sans-serif;font-weight:800;font-size:.95rem;color:#fff;flex-shrink:0}
 .sn{font-weight:700;font-size:.88rem;margin-bottom:2px}.si{font-size:.76rem;color:var(--muted)}
+
+/* DEPARTAMENTOS */
 .dg{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
 .dc{background:var(--card);border-radius:10px;padding:15px 17px;border-left:3px solid var(--blue)}
 .dn{font-weight:700;font-size:.88rem;margin-bottom:8px}
 .dbb{background:rgba(255,255,255,.06);border-radius:3px;height:5px;margin-bottom:6px}
 .dbf{height:100%;border-radius:3px;background:var(--blue);transition:width 1s}
 .dnn{display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted)}
+
+/* LOADER */
 .loader{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:999;gap:14px;transition:opacity .5s}
 .loader.gone{opacity:0;pointer-events:none}
 .spin{width:38px;height:38px;border:3px solid rgba(255,255,255,.08);border-top-color:var(--blue);border-radius:50%;animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .ltxt{font-family:'Exo 2',sans-serif;font-size:.82rem;color:var(--muted)}
+
+/* RESPONSIVE */
 @media(max-width:960px){.top-cards{grid-template-columns:1fr 1fr}.top-cards .kpi:first-child{grid-column:1/-1}.stat-row{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:600px){main{padding:14px}.top-cards,.stat-row{grid-template-columns:1fr 1fr}.tab{padding:9px 11px;font-size:.74rem}}
 </style>
@@ -86,12 +147,11 @@ main{padding:22px 26px;max-width:1600px;margin:0 auto}
 
 <header>
   <div class="logo">
-    <span class="logo-i">📈</span>
-    <span class="logo-t">Dashboard <span>Avanzado</span></span>
+    <span>📈 Dashboard </span><span class="p">Avanzado</span>
   </div>
   <div class="hdr-r">
     <button class="btn-tog" onclick="toggleDark()">🌙 MODO OSCURO</button>
-    <div class="clk"><div class="dot"></div><span id="clk">00:00:00</span></div>
+    <div class="clkw"><div class="dot"></div><span id="clk">00:00:00</span></div>
   </div>
 </header>
 
@@ -104,6 +164,7 @@ main{padding:22px 26px;max-width:1600px;margin:0 auto}
   </div>
   <div class="errb" id="errb"></div>
 
+  <!-- KPI -->
   <div class="top-cards">
     <div class="kpi" style="--kc:var(--blue)">
       <div class="kpi-icon">🏫</div>
@@ -128,6 +189,7 @@ main{padding:22px 26px;max-width:1600px;margin:0 auto}
     </div>
   </div>
 
+  <!-- TABS -->
   <div class="tabs">
     <button class="tab on"  onclick="switchTab('est',this)">🗂 Bloques</button>
     <button class="tab"     onclick="switchTab('sups',this)">👤 Supervisores</button>
@@ -135,53 +197,71 @@ main{padding:22px 26px;max-width:1600px;margin:0 auto}
     <button class="tab"     onclick="switchTab('res',this)">📊 Estadísticas por Bloque</button>
   </div>
 
-  <!-- Bloques + stats globales -->
+  <!-- PANEL: BLOQUES + STATS -->
   <div class="panel on" id="panel-est">
     <div class="stat-row">
       <div class="sc" style="--kc:var(--blue)"><div class="sc-icon">🏫</div><div class="sc-val" id="sC">—</div><div class="sc-lbl">Total Centros</div></div>
       <div class="sc" style="--kc:var(--cyan)"><div class="sc-icon">📶</div><div class="sc-val" id="sE">—</div><div class="sc-lbl">Navegación Estable</div></div>
-      <div class="sc" style="--kc:var(--yellow)"><div class="sc-icon">✂️</div><div class="sc-val" id="sCo">—</div><div class="sc-lbl">Corte F.O Externa</div></div>
+      <div class="sc" style="--kc:var(--red)"><div class="sc-icon">✂️</div><div class="sc-val" id="sCo">—</div><div class="sc-lbl">Corte F.O Externa</div></div>
       <div class="sc" style="--kc:var(--red)"><div class="sc-icon">❗</div><div class="sc-val" id="sPr">—</div><div class="sc-lbl">Problema Navegación</div></div>
       <div class="sc" style="--kc:var(--purple)"><div class="sc-icon">🔧</div><div class="sc-val" id="sIn">—</div><div class="sc-lbl">Intervenida</div></div>
     </div>
     <div class="sec-ttl">🗂 Detalle por Bloque</div>
-    <div class="blist" id="bEl"><div style="color:var(--muted);font-size:.83rem">Cargando…</div></div>
+    <div id="bEl"><div style="color:var(--muted);font-size:.83rem">Cargando…</div></div>
   </div>
 
-  <!-- Supervisores -->
+  <!-- PANEL: SUPERVISORES -->
   <div class="panel" id="panel-sups">
     <div class="sec-ttl">👤 Supervisores</div>
     <div class="sg" id="suEl"><div style="color:var(--muted);font-size:.83rem">Cargando…</div></div>
   </div>
 
-  <!-- Departamentos -->
+  <!-- PANEL: DEPARTAMENTOS -->
   <div class="panel" id="panel-deps">
     <div class="sec-ttl">📍 Departamentos</div>
     <div class="dg" id="deEl"><div style="color:var(--muted);font-size:.83rem">Cargando…</div></div>
   </div>
 
-  <!-- Estadísticas por bloque (tabla completa) -->
+  <!-- PANEL: ESTADÍSTICAS POR BLOQUE (tabla completa) -->
   <div class="panel" id="panel-res">
     <div class="sec-ttl">📊 Estadísticas por Bloque</div>
-    <div class="blist" id="brEl"><div style="color:var(--muted);font-size:.83rem">Cargando…</div></div>
+    <div id="brEl"><div style="color:var(--muted);font-size:.83rem">Cargando…</div></div>
   </div>
 </main>
 
 <script>
-const API = "https://script.google.com/macros/s/AKfycbyRCQ3VGws1A5bnYXZzMgDzLCNShaerJTLi9kHiy5It9HNj_ABw3k-FeZvU2JDglYRtWQ/exec";
+// ── CONFIG ────────────────────────────────────────────────────
+const API     = "https://script.google.com/macros/s/AKfycbyoP-eRsovybX8gHfUYOKZBY95QFGdd7x6x5VZ9MkzCQTkJRLw16jav6SxAtsVmQB0OwQ/exec";
 const REFRESH = 60000;
 
-// Reloj
+// Columnas de la tabla (estado → etiqueta corta, clase pill, emoji)
+const COLS = [
+  { k:"corte_fo_externa",          lbl:"Corte F.O Externa",          cls:"pill-red",    ico:"✂️" },
+  { k:"equipo_apagado",            lbl:"Equipo Apagado",              cls:"pill-yellow", ico:"🔌" },
+  { k:"intervenida",               lbl:"Intervenida",                 cls:"pill-purple", ico:"🔧" },
+  { k:"latencia",                  lbl:"Latencia",                    cls:"pill-orange", ico:"⏱" },
+  { k:"navegacin_estable",         lbl:"Navegación Estable",          cls:"pill-cyan",   ico:"📶" },
+  { k:"problema_de_ancho_de_banda",lbl:"Prob. Ancho de Banda",        cls:"pill-teal",   ico:"📡" },
+  { k:"problema_de_navegacin",     lbl:"Prob. de Navegación",         cls:"pill-blue",   ico:"❗" },
+  { k:"saturacin",                 lbl:"Saturación",                  cls:"pill-muted",  ico:"📊" },
+];
+
+// ── RELOJ ─────────────────────────────────────────────────────
 setInterval(()=>{
   const n=new Date();
-  document.getElementById('clk').textContent=[n.getHours(),n.getMinutes(),n.getSeconds()].map(v=>String(v).padStart(2,'0')).join(':');
+  document.getElementById('clk').textContent=
+    [n.getHours(),n.getMinutes(),n.getSeconds()].map(v=>String(v).padStart(2,'0')).join(':');
 },1000);
 
-// Dark mode
+// ── DARK MODE ─────────────────────────────────────────────────
 let dark=true;
-function toggleDark(){dark=!dark;document.body.classList.toggle('light',!dark);document.querySelector('.btn-tog').textContent=dark?'🌙 MODO OSCURO':'☀️ MODO CLARO';}
+function toggleDark(){
+  dark=!dark;
+  document.body.classList.toggle('light',!dark);
+  document.querySelector('.btn-tog').textContent=dark?'🌙 MODO OSCURO':'☀️ MODO CLARO';
+}
 
-// Tabs
+// ── TABS ──────────────────────────────────────────────────────
 function switchTab(n,btn){
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
   document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
@@ -189,17 +269,19 @@ function switchTab(n,btn){
   btn.classList.add('on');
 }
 
-// Fetch
+// ── FETCH ─────────────────────────────────────────────────────
 async function fetchData(){
   try{
     const r=await fetch(API+'?t='+Date.now());
     if(!r.ok) throw new Error('HTTP '+r.status);
     const d=await r.json();
+    // Si el Apps Script devuelve estados, recalcular keys
+    if(d.estados) recalcKeys(d.estados);
     render(d);
     document.getElementById('errb').style.display='none';
   }catch(e){
     const eb=document.getElementById('errb');
-    eb.textContent='⚠️ Error al conectar: '+e.message+'. Verifica que el Apps Script esté publicado como Web App.';
+    eb.textContent='⚠️ Error al conectar: '+e.message;
     eb.style.display='block';
   }finally{
     const l=document.getElementById('loader');
@@ -208,61 +290,119 @@ async function fetchData(){
   }
 }
 
+// Recalcular keys desde los estados reales del servidor
+function recalcKeys(estados){
+  estados.forEach(e=>{
+    const k=e.replace(/\s+/g,'_').replace(/[^a-z0-9_]/gi,'').toLowerCase();
+    const col=COLS.find(c=>c.lbl.toLowerCase().replace(/[^a-z]/g,'')===e.toLowerCase().replace(/[^a-z]/g,''));
+    if(col) col.k=k;
+  });
+}
+
+// ── RENDER ────────────────────────────────────────────────────
 function render(d){
   document.getElementById('upd').textContent=new Date().toLocaleTimeString('es-SV');
   document.getElementById('fbadge').textContent=d.fechaDatos||'Hoy';
 
   const tot=d.totalEscuelas||0;
   anim('kT',tot); anim('kM',d.enMonitoreo||0); anim('kP',d.prioridadAlta||0);
-
   const pm=tot?Math.round((d.enMonitoreo||0)/tot*100):0;
   const pp=tot?Math.round((d.prioridadAlta||0)/tot*100):0;
   document.getElementById('kMp').textContent=pm+'% del total';
   document.getElementById('kPp').textContent=pp+'% del total';
   setTimeout(()=>{setBar('bM',pm);setBar('bP',pp);},100);
 
-  const e=d.estadisticas||{};
-  anim('sC',e.totalCentros||0); anim('sE',e.navEstable||0);
-  anim('sCo',e.corte||0); anim('sPr',e.problemaNav||0); anim('sIn',e.intervenida||0);
+  const est=d.estadisticas||{};
+  anim('sC',est.totalCentros||0);
+  anim('sE',est.navegacin_estable||est.navegacion_estable||0);
+  anim('sCo',est.corte_fo_externa||0);
+  anim('sPr',est.problema_de_navegacin||est.problema_de_navegacion||0);
+  anim('sIn',est.intervenida||0);
 
-  renderBloques(d.bloques||[],'bEl');
-  renderBloques(d.bloques||[],'brEl');
-  renderSups(d.supervisores||[]);
-  renderDeps(d.departamentos||[],tot);
+  renderBloques(d.bloques||[], 'bEl');
+  renderBloques(d.bloques||[], 'brEl');
+  renderSups(d.bloques||[]);
+  renderDeps(d.departamentos||[], tot);
 }
 
-function renderBloques(bl,id){
+// ── TABLA POR BLOQUE ──────────────────────────────────────────
+function renderBloques(bloques, id){
   const el=document.getElementById(id);
-  if(!bl.length){el.innerHTML='<div style="color:var(--muted);font-size:.83rem">Sin datos de bloques para hoy.</div>';return;}
-  el.innerHTML=bl.map(b=>{
-    const t=b.escuelas||0;
-    const p=t?Math.round((b.navEstable||0)/t*100):0;
-    const bdg=p>=85?'<span class="badge bg">Estable</span>':p>=60?'<span class="badge by">Parcial</span>':'<span class="badge br">Crítico</span>';
-    return `<div class="bc">
-      <div>
-        <div class="bc-name">🗂 ${b.nombre}</div>
-        <div class="bc-meta">👤 ${b.supervisores} Supervisor${b.supervisores!==1?'es':''} &nbsp;|&nbsp; 🏫 ${t} Escuelas</div>
+  if(!bloques.length){
+    el.innerHTML='<div style="color:var(--muted);font-size:.83rem">Sin datos para hoy.</div>';
+    return;
+  }
+  el.innerHTML=bloques.map(b=>{
+    const filas=(b.tabla||[]).map(sup=>`
+      <tr>
+        <td>${sup.supervisor}</td>
+        ${COLS.map(c=>{
+          const v=sup[c.k]||0;
+          return `<td>${v>0?`<span class="pill ${c.cls}">${v}</span>`:`<span class="pill pill-0">0</span>`}</td>`;
+        }).join('')}
+        <td><span class="pill pill-muted">${sup.sinEstado||0}</span></td>
+        <td><span class="pill pill-total">${sup.total||0}</span></td>
+      </tr>`).join('');
+
+    const tot=b.totales||{};
+    const filaTot=`<tr class="total-row">
+      <td>TOTAL</td>
+      ${COLS.map(c=>{
+        const v=tot[c.k]||0;
+        return `<td>${v>0?`<span class="pill ${c.cls}">${v}</span>`:`<span class="pill pill-0">0</span>`}</td>`;
+      }).join('')}
+      <td><span class="pill pill-muted">${tot.sinEstado||0}</span></td>
+      <td><span class="pill pill-total">${tot.total||0}</span></td>
+    </tr>`;
+
+    return `
+    <div class="bloque-section">
+      <div class="bloque-header">
+        <div class="bloque-header-name">🗂 ${b.nombre}</div>
+        <div class="bloque-header-meta">
+          <span class="bloque-meta-badge">👤 ${b.supervisores} Supervisor${b.supervisores!==1?'es':''}</span>
+          <span class="bloque-meta-badge">🏫 ${b.escuelas} Escuelas</span>
+        </div>
       </div>
-      <div class="bc-stats">
-        <div class="bc-s"><div class="bc-sv" style="color:var(--cyan)">${b.navEstable}</div><div class="bc-sl">Estable</div></div>
-        <div class="bc-s"><div class="bc-sv" style="color:var(--yellow)">${b.corte}</div><div class="bc-sl">Corte</div></div>
-        <div class="bc-s"><div class="bc-sv" style="color:var(--red)">${b.problema}</div><div class="bc-sl">Problema</div></div>
-        <div class="bc-s"><div class="bc-sv" style="color:var(--purple)">${b.intervenida}</div><div class="bc-sl">Intervenida</div></div>
-        ${bdg}
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Supervisor</th>
+              ${COLS.map(c=>`<th>${c.ico} ${c.lbl}</th>`).join('')}
+              <th>Sin Estado</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${filas}
+            ${filaTot}
+          </tbody>
+        </table>
       </div>
     </div>`;
   }).join('');
 }
 
-function renderSups(sups){
+// ── SUPERVISORES (resumen) ────────────────────────────────────
+function renderSups(bloques){
   const el=document.getElementById('suEl');
-  if(!sups.length){el.innerHTML='<div style="color:var(--muted);font-size:.83rem">Sin supervisores.</div>';return;}
-  el.innerHTML=sups.map(s=>{
-    const ini=(s.nombre||'S').split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
-    return `<div class="scard"><div class="sav">${ini}</div><div><div class="sn">${s.nombre}</div><div class="si">Bloque: ${s.bloque} · ${s.escuelas} escuelas</div><div class="si">${s.departamento}</div></div></div>`;
+  const todos=[];
+  bloques.forEach(b=>(b.tabla||[]).forEach(s=>todos.push({...s,bloque:b.nombre})));
+  if(!todos.length){el.innerHTML='<div style="color:var(--muted);font-size:.83rem">Sin supervisores.</div>';return;}
+  // dedup por nombre
+  const uniq={};
+  todos.forEach(s=>{ if(!uniq[s.supervisor]) uniq[s.supervisor]=s; else uniq[s.supervisor].total+=s.total; });
+  el.innerHTML=Object.values(uniq).sort((a,b)=>b.total-a.total).map(s=>{
+    const ini=(s.supervisor||'S').split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
+    return `<div class="scard"><div class="sav">${ini}</div><div>
+      <div class="sn">${s.supervisor}</div>
+      <div class="si">Bloque: ${s.bloque} · ${s.total} escuelas</div>
+    </div></div>`;
   }).join('');
 }
 
+// ── DEPARTAMENTOS ─────────────────────────────────────────────
 function renderDeps(deps,total){
   const el=document.getElementById('deEl');
   if(!deps.length){el.innerHTML='<div style="color:var(--muted);font-size:.83rem">Sin departamentos.</div>';return;}
@@ -270,10 +410,14 @@ function renderDeps(deps,total){
   el.innerHTML=deps.map(d=>{
     const p=Math.round((d.centros||0)/mx*100);
     const g=total?Math.round((d.centros||0)/total*100):0;
-    return `<div class="dc"><div class="dn">📍 ${d.nombre}</div><div class="dbb"><div class="dbf" style="width:${p}%"></div></div><div class="dnn"><span>${d.centros} centros</span><span>${g}%</span></div></div>`;
+    return `<div class="dc"><div class="dn">📍 ${d.nombre}</div>
+      <div class="dbb"><div class="dbf" style="width:${p}%"></div></div>
+      <div class="dnn"><span>${d.centros} centros</span><span>${g}%</span></div>
+    </div>`;
   }).join('');
 }
 
+// ── HELPERS ───────────────────────────────────────────────────
 function anim(id,target){
   const el=document.getElementById(id);if(!el)return;
   const s=parseInt(el.textContent.replace(/\D/g,''))||0,t0=performance.now();
